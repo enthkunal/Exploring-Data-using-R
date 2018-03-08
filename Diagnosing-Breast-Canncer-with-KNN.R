@@ -14,7 +14,7 @@ table(wbcd$Diagnosis) # checking the v2(diagnostic) Benign or malignant
 wbcd$V2 <- factor(wbcd$Diagnosi, levels = c("B","M"), labels = c("Benign","Malignant")) # recoding the diagnosis variable
 round(prop.table(table(wbcd$V2)) * 100,  digits = 1)  #checking percentile
 
-summary(wbcd[c("radius_mean", "area_mean", "smoothness")] # getting summary for these features, 
+summary(wbcd[c("radius_mean", "area_mean", "smoothness")]) # getting summary for these features 
         
 # looking at the min values of each individual feature we can state that impact of the area_mean feture is going to be much larger than 
 # sommthness, Hence there is need of transformation of the data
