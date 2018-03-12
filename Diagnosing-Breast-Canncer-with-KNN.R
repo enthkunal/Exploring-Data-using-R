@@ -16,7 +16,7 @@ round(prop.table(table(wbcd$V2)) * 100,  digits = 1)  #checking percentile
 
 summary(wbcd[c("radius_mean", "area_mean", "smoothness")]) # getting summary for these features 
         
-# looking at the min values of each individual feature we can state that impact of the area_mean feture is going to be much larger than 
+# looking at the min values of each individual feature we can state that impact of the area_mean feture is going to be much larger than.
 # sommthness, Hence there is need of transformation of the data
 
 
