@@ -55,3 +55,30 @@ ham <- subset(sms_raw_train, type == "ham")
 
 wordcloud(spam$text, max.words = 40, scale = c(3,0.5))
 wordcloud(ham$text,max.words = 40, scale = c(3,0.5))
+
+# Data Preperation
+#finding Frequency
+
+findFreqTerms(sms_dtm_train, 5)
+sms_dict <- Dictionary(findFreqTerms(sms_dtm_train,5))
+Dictionary <- function(x) {
+  if( is.character(x) ) {
+    return (x)
+  }
+  stop('x is not a character vector')
+}
+
+sms_train <- DocumentTermMatrix(sms_corpus_train,list(Dictionary(sms_dict)))
+sms_test <- DocumentTermMatrix(sms_corpus_test,list(Dictionary(sms_dict)))
+convert_counts <- function(x) {
+  x <- ifelse(x > 0, 1, 0)
+  x <- factor(x, levels = c(0, 1), labels = c("No", "Yes"))
+  return(x)
+}
+
+
+sms_train <- apply(sms_train,MARGIN = 2,convert_counts)
+sms_test <- apply(sms_test, MARGIN = 2,convert_counts)
+
+
+
